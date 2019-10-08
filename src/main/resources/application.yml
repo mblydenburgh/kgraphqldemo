@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+# SPRING
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  liquibase:
+    change-log: classpath:/liquibase-changelog.xml
+    enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+app:
+  file:
+    players: 2012/playerstats.txt
+    teams: 2012/teamstats.txt
+    playerTenures: 2012/players.txt
+    games: 2012/gamelist.txt
