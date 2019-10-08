@@ -3,13 +3,11 @@ server:
 
 # SPRING
 spring:
-  main:
-    allow-bean-definition-overriding: true
   liquibase:
     change-log: classpath:/liquibase-changelog.xml
     enabled: true
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: none

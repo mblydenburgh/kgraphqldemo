@@ -1,4 +1,96 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
-
+    <property name="u_id" value="uuid()" dbms="mysql" />
+    <changeSet author="n0364359 (generated)" id="1570559583174-1">
+        <createTable tableName="game">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="boxScoreUrl" type="VARCHAR(255)"/>
+            <column name="date" type="VARCHAR(255)"/>
+            <column name="playByPlayUrl" type="VARCHAR(255)"/>
+            <column name="awayTeam_id" type="VARCHAR(255)"/>
+            <column name="homeTeam_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-2">
+        <createTable tableName="player">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dRebFor" type="INT"/>
+            <column name="dRebOpp" type="INT"/>
+            <column name="dRebRate" type="DOUBLE"/>
+            <column name="defRtg" type="DOUBLE"/>
+            <column name="minutes" type="DOUBLE"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="oRebFor" type="INT"/>
+            <column name="oRebOpp" type="INT"/>
+            <column name="oRebRate" type="DOUBLE"/>
+            <column name="offRtg" type="DOUBLE"/>
+            <column name="overallRtg" type="DOUBLE"/>
+            <column name="pointsFor" type="INT"/>
+            <column name="pointsOpp" type="INT"/>
+            <column name="possessionsFor" type="INT"/>
+            <column name="possessionsOpp" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-3">
+        <createTable tableName="team">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dRebFor" type="INT"/>
+            <column name="dRebOpp" type="INT"/>
+            <column name="dRebRate" type="DOUBLE"/>
+            <column name="defRtg" type="DOUBLE"/>
+            <column name="minutes" type="DOUBLE"/>
+            <column name="oRebFor" type="INT"/>
+            <column name="oRebOpp" type="INT"/>
+            <column name="oRebRate" type="DOUBLE"/>
+            <column name="offRtg" type="DOUBLE"/>
+            <column name="overallRtg" type="DOUBLE"/>
+            <column name="pointsFor" type="INT"/>
+            <column name="pointsOpp" type="INT"/>
+            <column name="possessionsFor" type="INT"/>
+            <column name="possessionsOpp" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-4">
+        <createTable tableName="tenure">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="VARCHAR(255)"/>
+            <column name="endDate" type="VARCHAR(255)"/>
+            <column name="position" type="DOUBLE"/>
+            <column name="startDate" type="VARCHAR(255)"/>
+            <column name="player_id" type="VARCHAR(255)"/>
+            <column name="team_id" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-5">
+        <addPrimaryKey columnNames="id" constraintName="gamePK" tableName="game"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-6">
+        <addPrimaryKey columnNames="id" constraintName="playerPK" tableName="player"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-7">
+        <addPrimaryKey columnNames="id" constraintName="teamPK" tableName="team"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-8">
+        <addPrimaryKey columnNames="id" constraintName="tenurePK" tableName="tenure"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-9">
+        <addForeignKeyConstraint baseColumnNames="awayTeam_id" baseTableName="game" constraintName="FK_8rticc91dg6pi1euilh50rbow" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-10">
+        <addForeignKeyConstraint baseColumnNames="team_id" baseTableName="tenure" constraintName="FK_dwf2jyrb2kj0d1cmmfadtq01c" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-11">
+        <addForeignKeyConstraint baseColumnNames="player_id" baseTableName="tenure" constraintName="FK_oa607et1l68vfk0g82kfaff0k" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="player"/>
+    </changeSet>
+    <changeSet author="n0364359 (generated)" id="1570559583174-12">
+        <addForeignKeyConstraint baseColumnNames="homeTeam_id" baseTableName="game" constraintName="FK_rvg7xe45hsuo9mior1l7pmuqw" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="team"/>
+    </changeSet>
 </databaseChangeLog>
