@@ -10,7 +10,7 @@ import javax.persistence.Table
 @Table(name = "team")
 data class Team (
     @Id
-    val id: String = UUID.randomUUID().toString(),
+    val id: String? = null,
 
     @Column
     var minutes: Double = 0.0,
